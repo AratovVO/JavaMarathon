@@ -43,7 +43,7 @@ public class Airplane {
                 + ", вес: " + weight
                 + ", количество топлива в баке: " + getFuel());
     }
-    public int fillUp(int extraFuel){
-         return fuel = getFuel() + extraFuel;
+    public void fillUp(int extraFuel){
+         fuel += extraFuel;
     }
 }

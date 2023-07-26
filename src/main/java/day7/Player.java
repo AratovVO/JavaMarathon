@@ -21,11 +21,11 @@ public class Player {
         }
     }
     public void run() {
-        if (stamina == 0) {
+        if (stamina == MIN_STAMINA) {
             return;
         }
         stamina--;
-        if(stamina == 0){
+        if(stamina == MIN_STAMINA){
             System.out.println("Игроку нужен отдых");
             countPlayers--;
         }

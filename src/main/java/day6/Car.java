@@ -40,10 +40,8 @@ public class Car {
         System.out.println("Это автомобиль");
     }
     public int yearDifference(int  inputYear){
-        if(inputYear > yearOfIssue){
-            return inputYear - yearOfIssue;
-        } else if(inputYear < yearOfIssue) {
-            return yearOfIssue - inputYear;
+        if(inputYear != yearOfIssue){
+           return Math.abs(inputYear - yearOfIssue);
         } else {
             return 0;
         }
