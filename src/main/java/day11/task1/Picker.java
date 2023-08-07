@@ -1,6 +1,7 @@
 package day11.task1;
 
 public class Picker implements Worker{
+    final int SALARY = 80;
     private int salary;
     private boolean isPayed;
     private Warehouse wh;
@@ -26,7 +27,7 @@ public class Picker implements Worker{
 
     @Override
     public void doWork() {
-            int SALARY = 80;
+
             salary += SALARY;
             wh.incrementCountPickedOrders();
 

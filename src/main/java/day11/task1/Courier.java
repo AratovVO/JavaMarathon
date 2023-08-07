@@ -1,6 +1,7 @@
 package day11.task1;
 
 public class Courier implements Worker{
+    final int SALARY = 100;
     private int salary;
     private boolean isPayed;
     private Warehouse wh;
@@ -19,7 +20,6 @@ public class Courier implements Worker{
         return isPayed;
     }
     public void doWork(){
-        int SALARY = 100;
         salary+=SALARY;
         wh.incrementCountDeliveredOrders();
     }

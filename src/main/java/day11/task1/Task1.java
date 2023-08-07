@@ -2,7 +2,7 @@ package day11.task1;
 
 public class Task1 {
     public static void main(String[] args) {
-        Warehouse warehouse1 = new Warehouse(0,0);
+        Warehouse warehouse1 = new Warehouse();
         Courier courier1 = new Courier(0,false,warehouse1);
 //        Courier courier2 = new Courier(0,false,warehouse1);
         Picker picker1 = new Picker(0,false,warehouse1);
@@ -64,7 +64,7 @@ public class Task1 {
         System.out.println(courier1);
         System.out.println(warehouse1);
 
-        Warehouse warehouse2 = new Warehouse(0,0);
+        Warehouse warehouse2 = new Warehouse();
         Courier courier2 = new Courier(0,false,warehouse2);
         Picker picker2 = new Picker(0,false,warehouse2);
         businessProcess(picker2);

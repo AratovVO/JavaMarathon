@@ -4,9 +4,9 @@ public class Warehouse {
     private int countPickedOrders;
     private int countDeliveredOrders;
 
-    public Warehouse(int countPickedOrders, int countDeliveredOrders) {
-        this.countPickedOrders = 0;
-        this.countDeliveredOrders = 0;
+    public Warehouse() {
+        countPickedOrders = 0;
+        countDeliveredOrders = 0;
     }
 
     public int getCountPickedOrders() {
