@@ -22,12 +22,17 @@ public class Task2 {
                 String line = scanner.nextLine();
                 String[] str = line.split(" ");
                 if(Integer.parseInt(str[1]) < 0){
-                    return null;
+                    throw new IllegalArgumentException();
+                } else if(line.isEmpty() || str[0]==null || str[1] == null){
+                    throw new NullPointerException();
                 }
                 names.add(line);
             }
         } catch (IOException e) {
             System.out.println("Фалйн не найден");
+        } catch (IllegalArgumentException | NullPointerException e ){
+            System.out.println("Некорректный входной файл");
+            return null;
         }
         return names;
     }

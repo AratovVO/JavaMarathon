@@ -8,7 +8,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class Task1 {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         File file = new File("File.txt");
         printSumDigits(file);
     }
@@ -18,7 +18,7 @@ public class Task1 {
             String x = scan.nextLine();
             String[] arrString = x.split(" ");
             if (arrString.length != 10 ){
-                throw new ArrayIndexOutOfBoundsException("Некорректный входной файл");
+                throw new ArrayIndexOutOfBoundsException();
             }
             int[] numbers = new int[arrString.length];
             int result = 0;
@@ -30,6 +30,8 @@ public class Task1 {
 
         } catch (IOException e) {
             System.out.println("Файл не найден");
+        } catch (ArrayIndexOutOfBoundsException e){
+            System.out.println("Некорректный входной файл");
         }
     }
 }

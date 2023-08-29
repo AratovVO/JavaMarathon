@@ -19,12 +19,17 @@ public class Task3 {
                 String line = scanner.nextLine();
                 String[] str = line.split(" ");
                 if(Integer.parseInt(str[1]) < 0)
-                    return null;
+                    throw new IllegalArgumentException();
+                else if(line.isEmpty() || str[0]==null || str[1] == null){
+                    throw new NullPointerException();
+                }
                 persons.add(new Person (Integer.parseInt(str[1]), str[0]));
             }
 
         } catch(IOException e){
             System.out.println("Файл не найден");
+        } catch (IllegalArgumentException | NullPointerException e){
+            System.out.println("Некорректный входной файл");
         }
         return persons;
     }
