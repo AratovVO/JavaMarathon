@@ -10,8 +10,6 @@ import java.util.Scanner;
 public class Task2 {
     public static void main(String[] args) {
         Random random = new Random();
-        int min = 0;
-        int max = 100;
         int[] numbers = new int[1000];
         PrintWriter pw1 = null;
         PrintWriter pw2 = null;
@@ -28,16 +26,20 @@ public class Task2 {
             Scanner scanner = new Scanner(file1);
             while(scanner.hasNextLine()) {
                 String line = scanner.nextLine();
+                if(line.length() == 0){
+                    throw new NullPointerException();
+                }
                 String[] str = line.split(" ");
                 if (str.length < 100) {
                     throw new NullPointerException();
                 }
-                int[] numbersInt = new int[1000];
                 double result = 0;
                 int counter = 0;
                 for (int i = 0; i < 1000; i++) {
-                    numbersInt[i] = Integer.parseInt(str[i]);
-                    result += numbersInt[i];
+                    result += Integer.parseInt(str[i]);
+                    if(!((Double)result instanceof Double)){
+                        throw new IllegalArgumentException();
+                    }
                     if (i % 20 == 0) {
                         pw2.print(result / 20 + " ");
                         result = 0;
@@ -67,13 +69,18 @@ public class Task2 {
             int result = 0;
             for(int i = 0; i < arrNumbers.length; i++){
                 arrNumbers[i] = Double.parseDouble(numbers[i]);
+                if(!((Double)arrNumbers[i] instanceof Double)){
+                    throw new IllegalArgumentException();
+                }
                result += (int) Math.round(arrNumbers[i]);
             }
             System.out.println(result/arrNumbers.length);
         } catch (IOException e){
             System.out.println("Файл не найден");
-        } catch(IllegalArgumentException e){
+        } catch(ArrayIndexOutOfBoundsException e){
             System.out.println("Неверный файл");
+        } catch (IllegalArgumentException e){
+            System.out.println("Неверные данные файла");
         }
     }
 }

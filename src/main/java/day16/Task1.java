@@ -1,5 +1,6 @@
 package day16;
 
+import java.awt.geom.QuadCurve2D;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.text.DecimalFormat;
@@ -15,12 +16,16 @@ public class Task1 {
         Scanner scanner = new Scanner(file);
         while(scanner.hasNextLine()) {
             String numbers = scanner.nextLine();
+            if(numbers.isEmpty()){
+                throw new NullPointerException();
+            }
             String[] arrNumbers = numbers.split(" ");
-            int[] arr = new int[arrNumbers.length];
             double avg = 0;
-            for (int i = 0; i < arr.length; i++) {
-                arr[i] = Integer.parseInt(arrNumbers[i]);
-                avg += arr[i];
+            for (int i = 0; i < arrNumbers.length; i++) {
+                avg += Integer.parseInt(arrNumbers[i]);
+                if(!((Double)avg instanceof Double)){
+                    throw new IllegalArgumentException();
+                }
             }
             avg /= arrNumbers.length;
             DecimalFormat df = new DecimalFormat("#.###");
@@ -29,6 +34,10 @@ public class Task1 {
         }
     } catch (FileNotFoundException e){
             System.out.println("Файл не найден");
+        } catch (NullPointerException e){
+            System.out.println("Пустой файл");
+        } catch (IllegalArgumentException e){
+            System.out.println("Неверные данные файла");
         }
     }
 }
