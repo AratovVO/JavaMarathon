@@ -1,8 +1,5 @@
 package day18;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Node {
     int value;
     Node left;
@@ -13,3 +10,4 @@ public class Node {
         right = null;
     }
 }
+
