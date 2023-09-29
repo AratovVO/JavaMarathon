@@ -2,8 +2,9 @@ package day19.task2;
 
 import java.io.File;
 import java.io.IOException;
-import java.sql.SQLOutput;
 import java.util.*;
+
+import static java.lang.Integer.parseInt;
 
 /**
  * @author Neil Alishev
@@ -11,12 +12,12 @@ import java.util.*;
 public class Task2 {
     public static void main(String[] args) {
         HashMap<Integer, Point> cars = new HashMap<>();
-        File file = new File("C:\\Users\\v.aratov\\Desktop\\Aratov\\JavaMarathon2021\\src\\main\\resources\\taxi_cars.txt");
+        File file = new File("C:\\IdeaProjects\\JavaMarathon2021\\src\\main\\resources\\taxi_cars.txt");
         try {
             Scanner scanner = new Scanner(file);
             while(scanner.hasNextLine()) {
                 String str = scanner.nextLine();
-                if(str.length() == 0){
+                if(str.isEmpty()){
                     throw new NullPointerException();
                 }
                 String[] arr = str.split(" ");
@@ -28,7 +29,6 @@ public class Task2 {
                     cars.put(Integer.parseInt(arr[0]),new Point(x,y));
                     }
                 }
-//            System.out.println(cars);
             List<Map.Entry<Integer, Point>> entryList = new ArrayList<>(cars.entrySet());
             entryList.sort(new Comparator<Map.Entry<Integer, Point>>() {
                 @Override
@@ -46,29 +46,22 @@ public class Task2 {
                 int x2 = input.nextInt();
                 System.out.print("y2: ");
                 int y2 = input.nextInt();
-//                int x1,x2,y1,y2;
-//                x1 = 0;
-//                x2 = 10;
-//                y1 = 10;
-//                y2 = 10;
                 if ((x1 < 0 || y1 < 0 || x2 < 0 || y2 < 0) && (x1 == x2)) {
                     System.out.println("Введены некорректные координаты");
                 } else {
                     for(Map.Entry<Integer,Point> entry : entryList){
-                        if((entry.getValue().getX() < x2 && entry.getValue().getX() > x1)
-                        && (entry.getValue().getY() < y2 && entry.getValue().getY() > y1)){
+                        if(((entry.getValue().getX() < x2 && entry.getValue().getX() > x1)
+                                && (entry.getValue().getY() < y2 && entry.getValue().getY() > y1) ||
+                                ((entry.getValue().getX() > x2 && entry.getValue().getX() < x1)
+                                && (entry.getValue().getY() > y2 && entry.getValue().getY() < y1)))){
                             System.out.println("Номер идентификатора: " + entry.getKey());
-                        } else {
-                            throw new EmptyStackException();
                         }
                     }
                 }
         } catch(IOException e){
             System.out.println("Файл не найден");
-        } catch(NullPointerException e){
-            System.out.println("Пустой файл");
-        } catch (EmptyStackException e){
-            System.out.println("Машин не найдено");
+        } catch (IllegalArgumentException e){
+            System.out.println("Некорректный файл");
         }
     }
 }
