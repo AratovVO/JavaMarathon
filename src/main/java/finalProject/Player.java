@@ -13,13 +13,16 @@ public class Player {
         return name;
     }
 
-    public static void chooesFirst(Player player1, Player player2){
+    public static int chooesFirst(Player player1, Player player2) {
         Random random = new Random();
-        if(random.nextInt(2) == 0){
+        int ran = random.nextInt(2);
+        if (ran == 0) {
             System.out.println("Игрок " + player1 + " ходит первым");
-        } else if(random.nextInt(2) == 1){
+        } else {
             System.out.println("Игрок " + player2 + " ходит первым");
+
         }
+        return ran;
     }
 
     @Override
@@ -27,3 +30,4 @@ public class Player {
         return name;
     }
 }
+
