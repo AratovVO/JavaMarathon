@@ -10,6 +10,13 @@ public class Game {
         field2.printField();
         int ran = Player.chooesFirst(player1,player2);
         if(ran == 0){
+            System.out.println("Введите координаты первого однопалубного корабля: ");
+            field1.setOneDeckShip();
+            System.out.println("Введите координаты второго однопалубного корабля: ");
+            field1.setOneDeckShip();
+            System.out.println("Введите координаты третьего однопалубного корабля: ");
+            field1.setOneDeckShip();
+            System.out.println("Введите координаты четвертого однопалубного корабля: ");
             field1.setOneDeckShip();
         } else {
             field2.setOneDeckShip();
